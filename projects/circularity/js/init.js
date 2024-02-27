@@ -44,7 +44,7 @@ var init = function (window) {
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
            
 
-            // TODO 9 : Iterate over the array
+            // TODO 8 / 9 : Iterate over the array
            
             
         }
