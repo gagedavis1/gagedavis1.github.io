@@ -1,3 +1,4 @@
+
 var init = function (window) {
     'use strict';
     var 
@@ -51,13 +52,15 @@ var init = function (window) {
             //physikz.updatePosition(circles[1])
            // physikz.updatePosition(circles[2])//*
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
-            game.checkCirclePosition(circles[0])
-            game.checkCirclePosition(circles[1])
-            game.checkCirclePosition(circles[2])
+            // The commented code below became obselete
+            //game.checkCirclePosition(circles[0])
+            //game.checkCirclePosition(circles[1])
+            //game.checkCirclePosition(circles[2])
 
             // TODO 8 / 9 : Iterate over the array
             for (var i = 0 ; i < 101 ; i++) { 
             physikz.updatePosition(circles[i])
+            game.checkCirclePosition(circles[i])
             }
             
         }
