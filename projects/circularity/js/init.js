@@ -21,18 +21,25 @@ var init = function (window) {
         ////////////////////////////////////////////////////////////
         
         // TODO 1 : Declare and initialize our variables
-        var circle;
-        var circles = [];
+        var circle; //created an empty varible for later use
+        var circles = []; //created an empty varible with empty an empty array for later use
         // TODO 2 : Create a function that draws a circle 
-       function drawCircle(){
-            circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
+       function drawCircle(){ //created our basic drawCircle function to call upon later
+            circle = draw.randomCircleInArea(canvas, true, true, "#999", 2); // code to draw our circles and make them active
             physikz.addRandomVelocity(circle, canvas);
             view.addChild(circle);
             circles.push(circle);
         }
 
         // TODO 3 / 7 : Call the drawCircle() function 
-        for (var i = 0 ; i < 101 ; i++) { 
+        
+        //drawCircle() called our drawCircle function 5 times to create 5 circles, but code became obesolete
+        //drawCircle()
+        //drawCircle()
+        //drawCircle()
+        //drawCircle()
+        
+        for (var i = 0 ; i < 101 ; i++) { //basic for loop that calls upon the drawCircle function until i>=101
             drawCircle()
         }
 
@@ -46,19 +53,19 @@ var init = function (window) {
         and check to see if it has drifted off the screen.         
         */
         function update() {
-            // removed todo 4 since it was obselite
+            // removed todo 4 since it was obsolete
             // TODO 4 : Update the circle's position 
-           // physikz.updatePosition(circles[0])
+           // physikz.updatePosition(circles[0]) updates the three circles position manually
             //physikz.updatePosition(circles[1])
            // physikz.updatePosition(circles[2])//*
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
-            // The commented code below became obselete
-            //game.checkCirclePosition(circles[0])
+            // The commented code below became obsolete
+            //game.checkCirclePosition(circles[0]) checks the three circles position manually
             //game.checkCirclePosition(circles[1])
             //game.checkCirclePosition(circles[2])
 
             // TODO 8 / 9 : Iterate over the array
-            for (var i = 0 ; i < 101 ; i++) { 
+            for (var i = 0 ; i < 101 ; i++) { // basic for loop that will update and check circle pos. until our index i>= 101
             physikz.updatePosition(circles[i])
             game.checkCirclePosition(circles[i])
             }
@@ -78,13 +85,13 @@ var init = function (window) {
             }
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
-            if ( circle.x < 0) {
+            if ( circle.x < 0) { //when the circle goes of the left of the screen it will reapear on the right side.
                 circle.x = canvas.width
             }
-            if ( circle.y > canvas.height) {
+            if ( circle.y > canvas.height) { //when the circle goes off the bottom of the screen it will reappear at the top
                 circle.y = 0
             }
-            if ( circle.y < 0 ) {
+            if ( circle.y < 0 ) {//when the circle goes off the top of the screen it will reappear at the bottom.
                 circle.y = canvas.height
             }
 

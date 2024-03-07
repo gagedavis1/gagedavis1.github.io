@@ -1,0 +1,8 @@
+body {
+    background: url("MGS3\ 3D\ cover\ art.jpg") no-repeat center center fixed;
+    background-color: #ffffff;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
