@@ -30,6 +30,7 @@ var background = function (window) {
         //////////////////////////////////////////////////////////////////
         // TODO (several):
         var tree;
+        var buildings = [];
       
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
@@ -39,7 +40,7 @@ var background = function (window) {
             // TODO 1:
             // this currently fills the background with an obnoxious yellow;
             // you should modify both the height and color to suit your game
-            var backgroundFill = draw.rect(canvasWidth,canvasHeight,'blue');
+            var backgroundFill = draw.rect(canvasWidth,canvasHeight / 2,'blue');
             background.addChild(backgroundFill);
             
             // TODO 2: - Add a moon and starfield
@@ -59,7 +60,14 @@ var background = function (window) {
             background.addChild(moon); //takes data stored in moon variable, and adds it as a child to the background so it can be used.
             
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
-            
+            for (var i = 0; i < 5; i++) {
+                var buildingHeight = Math.random() * 500; //create varible that holds height of buildings
+                var building = draw.rect(75, buildingHeight, "LightGray", "Black", 1); //creates varible that holds a single building
+                building.x = 200 * i; //creates x value for the building
+                building.y = groundY - buildingHeight; //start at ground y and subtracts by height
+                background.addChild(building); //adds building to background
+                buildings.push(building); //pushes building to its corresponding array
+            }
             
             // TODO 3: Part 1 - Add a tree
             tree = draw.bitmap("img/tree.png");
@@ -86,7 +94,14 @@ var background = function (window) {
             }
             
             // TODO 4: Part 2 - Parallax
-            
+            for(var i = 0; i < buildings.length; i++){
+                var building = buildings[i];
+                building.x = building.x - 0.5
+
+                if(building.x < -100){
+                    building.x = canvasWidth;
+                }
+            }
 
         } // end of update function - DO NOT DELETE
         
