@@ -36,7 +36,7 @@ var runLevels = function (window) {
 
     function createEnemy(x, y){
       var enemy = game.createGameItem("enemy", 25);
-      var redSquare = draw.rect(50, 50, "red");
+      var redSquare = draw.bitmap('img/Roomba.png');
       redSquare.x = -25;
       redSquare.y = -25;
       enemy.addChild(redSquare);
@@ -44,9 +44,11 @@ var runLevels = function (window) {
       enemy.y = y;
       game.addGameItem(enemy);
       enemy.velocityX = -5;
-      enemy.rotationalVelocity = 10
+      enemy.rotationalVelocity = 0
       enemy.onPlayerCollision = function () {
-      game.changeIntergrity(-10)
+      game.changeIntegrity(-10)
+      redSquare.scaleX = 1;
+      redSquare.scaleY = 1;
       };
       enemy.onProjectileCollision = function (){
         game.increaseScore(100);
@@ -54,11 +56,6 @@ var runLevels = function (window) {
       }
     };
 
-    createEnemy(700, groundY - 50)
-
-    createSawBlade(400, groundY - 120)
-    createSawBlade(700, groundY - 120)
-    createSawBlade(900, groundY - 120)
 
     function createReward(x, y){
       var reward = game.createGameItem("enemy", 25);
@@ -74,20 +71,53 @@ var runLevels = function (window) {
       
       reward.onPlayerCollision = function () {
         game.increaseScore(100);
-        game.changeIntergrity(10)
+        game.changeIntegrity(10)
         reward.shrink();
       };
     }
-    createReward(1000, groundY - 20)
 
-
-
+    function createMarker(x, y){
+      var marker = game.createGameItem("enemy", 25);
+      var redSquare = draw.rect(50, 50, "yellow")
+      redSquare.x = -25;
+      redSquare.y = -25;
+      marker.addChild(redSquare);
+      marker.x = x;
+      marker.y = y;
+      game.addGameItem(marker);
+      marker.velocityX = -5;
+      marker.rotationalVelocity = 0
+      marker.onPlayerCollision = function () {
+      game.changeIntegrity(-10)
+      redSquare.scaleX = 1;
+      redSquare.scaleY = 1;
+      };
+      marker.onPlayerCollision = function (){
+        game.changeIntegrity(100);
+        startLevel(); 
+      }
+    };
 
 
     function startLevel() {
       // TODO 13 goes below here
-
-
+      var level = levelData[currentLevel]
+      var levelObjects = level.gameItems;
+      for(var i = 0; i < levelObjects.length; i++){
+        var element = levelObjects[i];
+        if (element.type === "sawblade"){
+          createSawBlade(element.x, element.y)
+        }
+        if (element.type === "enemy"){
+          createEnemy(element.x, element.y)
+        }
+        if (element.type === "reward"){
+          createMarker(element.x, element.y)
+        }
+        if (element.type === "marker"){
+          createMarker(element.x, element.y)
+        }
+      }
 
       //////////////////////////////////////////////
       // DO NOT EDIT CODE BELOW HERE
