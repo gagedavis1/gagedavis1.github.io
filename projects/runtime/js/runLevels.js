@@ -34,44 +34,45 @@ var runLevels = function (window) {
 
   
 
-    function createEnemy(x, y){
+    function createEnemy(x, y, img, moveX, moveY, velo, scaleX, scaleY, dmg, points){
       var enemy = game.createGameItem("enemy", 25);
-      var redSquare = draw.bitmap('img/Roomba.png');
-      redSquare.x = -25;
-      redSquare.y = -25;
+      var redSquare = draw.bitmap(img);
+      redSquare.x = moveX;
+      redSquare.y = moveY;
       enemy.addChild(redSquare);
       enemy.x = x;
       enemy.y = y;
       game.addGameItem(enemy);
-      enemy.velocityX = -5;
+      enemy.velocityX = velo;
       enemy.rotationalVelocity = 0
       enemy.onPlayerCollision = function () {
-      game.changeIntegrity(-10)
-      redSquare.scaleX = 1;
-      redSquare.scaleY = 1;
+      game.changeIntegrity(dmg)
+      enemy.fadeOut()
+      redSquare.scaleX = scaleX; 
+      redSquare.scaleY = scaleY;
       };
       enemy.onProjectileCollision = function (){
-        game.increaseScore(100);
+        game.increaseScore(points);
         enemy.fadeOut(); 
       }
     };
 
 
-    function createReward(x, y){
+    function createReward(x, y, img, moveX, moveY, velo, velo, scaleX, scaleY, hp, points){
       var reward = game.createGameItem("enemy", 25);
-      var blueSquare = draw.rect(50, 50, "blue");
-      blueSquare.x = -25;
-      blueSquare.y = -25;
+      var blueSquare = draw.bitmap(img);
+      blueSquare.x = moveX;
+      blueSquare.y = moveY;
       reward.addChild(blueSquare);
       reward.x = x;
       reward.y = y;
       game.addGameItem(reward);
-      reward.velocityX = -5;
-      reward.rotationalVelocity = 10
-      
+      reward.velocityX = -velo;
+      blueSquare.scaleX = scaleX
+      blueSquare.scaleY = scaleY
       reward.onPlayerCollision = function () {
-        game.increaseScore(100);
-        game.changeIntegrity(10)
+        game.increaseScore(points);
+        game.changeIntegrity(hp)
         reward.shrink();
       };
     }
@@ -109,7 +110,7 @@ var runLevels = function (window) {
           createSawBlade(element.x, element.y)
         }
         if (element.type === "enemy"){
-          createEnemy(element.x, element.y)
+          createEnemy(element.x, element.y, element.image, element.moveX, element.moveY, element.velo, element.scaleX, element.scaleY, element.damage, element.points)
         }
         if (element.type === "reward"){
           createMarker(element.x, element.y)
