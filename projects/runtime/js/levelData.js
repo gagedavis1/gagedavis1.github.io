@@ -18,6 +18,7 @@ var makeLevelData = function (window) {
           { type: "sawblade", x: 400, y: groundY -120 },
           { type: "sawblade", x: 600, y: groundY -120},
           { type: "sawblade", x: 900, y: groundY -120},
+          { type: "enemy", x: 400, y: groundY -120, image: 'img/fireball.png', moveX: -23, moveY: -25, velo: -4, scaleX: 1, scaleY: 1, damage: 5, points: 100},
           { type: "enemy", x: 700, y: groundY -50, image: 'img/Roomba.png', moveX: -23, moveY: -25, velo: -4, scaleX: 0.25, scaleY: 0.25, damage: 3, points: 100},
           { type: "reward", x: 1000, y: groundY -20, image: 'img/placeholder.png', moveX: 0, moveY: 0, velo: 0, scaleX: 0, scaleY: 0, hp: 100, points: 100},
           { type: "marker", x: 1500, y: groundY -100 },  //fix the placeholders you bum ^ (not you Ms. S)
