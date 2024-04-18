@@ -58,7 +58,7 @@ var runLevels = function (window) {
     };
 
 
-    function createReward(x, y, img, moveX, moveY, velo, velo, scaleX, scaleY, hp, points){
+    function createReward(x, y, img, moveX, moveY, velo, scaleX, scaleY, hp, points){
       var reward = game.createGameItem("enemy", 25);
       var blueSquare = draw.bitmap(img);
       blueSquare.x = moveX;
@@ -77,24 +77,23 @@ var runLevels = function (window) {
       };
     }
 
-    function createMarker(x, y){
+    function createMarker(x, y, img, moveX, moveY, velo, scaleX, scaleY, hp, points){
       var marker = game.createGameItem("enemy", 25);
-      var redSquare = draw.rect(50, 50, "yellow")
-      redSquare.x = -25;
-      redSquare.y = -25;
+      var redSquare = draw.bitmap(img);
+      redSquare.x = moveX;
+      redSquare.y = moveY;
       marker.addChild(redSquare);
       marker.x = x;
       marker.y = y;
       game.addGameItem(marker);
-      marker.velocityX = -5;
+      marker.velocityX = velo;
       marker.rotationalVelocity = 0
       marker.onPlayerCollision = function () {
-      game.changeIntegrity(-10)
-      redSquare.scaleX = 1;
-      redSquare.scaleY = 1;
+      redSquare.scaleX = scaleX;
+      redSquare.scaleY = scaleY;
       };
       marker.onPlayerCollision = function (){
-        game.changeIntegrity(100);
+        game.changeIntegrity(hp);
         startLevel(); 
       }
     };
@@ -113,10 +112,10 @@ var runLevels = function (window) {
           createEnemy(element.x, element.y, element.image, element.moveX, element.moveY, element.velo, element.scaleX, element.scaleY, element.damage, element.points)
         }
         if (element.type === "reward"){
-          createMarker(element.x, element.y)
+          createReward(element.x, element.y, element.image, element.moveX, element.moveY, element.velo, element.scaleX, element.scaleY, element.hp, element.points)
         }
         if (element.type === "marker"){
-          createMarker(element.x, element.y)
+          createMarker(element.x, element.y, element.image, element.moveX, element.moveY, element.velo, element.scaleX, element.scaleY, element.hp, element.points)
         }
       }
 

@@ -40,7 +40,7 @@ var background = function (window) {
             // TODO 1:
             // this currently fills the background with an obnoxious yellow;
             // you should modify both the height and color to suit your game
-            var backgroundFill = draw.rect(canvasWidth,canvasHeight / 2,'blue');
+            var backgroundFill = draw.bitmap('img/brickwall.png');
             background.addChild(backgroundFill);
             
             // TODO 2: - Add a moon and starfield
