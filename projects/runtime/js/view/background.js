@@ -40,39 +40,39 @@ var background = function (window) {
             // TODO 1:
             // this currently fills the background with an obnoxious yellow;
             // you should modify both the height and color to suit your game
-            var backgroundFill = draw.bitmap('img/brickwall.png');
+            var backgroundFill = draw.bitmap('img/BrickWall4.png');
             background.addChild(backgroundFill);
             
             // TODO 2: - Add a moon and starfield
             
-            for(var stars = 0; stars < 100; stars++){
-            var circle = draw.circle(3, "yellow", "LightGray", 1);
-            circle.x = canvasWidth * Math.random();
-            circle.y = groundY * Math.random();
-            background.addChild(circle);
-            }
+            //for(var stars = 0; stars < 100; stars++){
+            //var circle = draw.circle(3, "yellow", "LightGray", 1);
+           // circle.x = canvasWidth * Math.random();
+           // circle.y = groundY * Math.random();
+           // background.addChild(circle);
+           // }
             
-            var moon = draw.bitmap("img/moon.png"); //holds image of the moon
-            moon.x = canvasWidth - 200; //x value of the moon
-            moon.y = groundY - 450; //y value of the moon
-            moon.scaleX = 0.4; //scales moon to appropriate height
-            moon.scaleY = 0.4;
-            background.addChild(moon); //takes data stored in moon variable, and adds it as a child to the background so it can be used.
+           // var moon = draw.bitmap("img/moon.png"); //holds image of the moon
+           // moon.x = canvasWidth - 200; //x value of the moon
+           // moon.y = groundY - 450; //y value of the moon
+           // moon.scaleX = 0.4; //scales moon to appropriate height
+           // moon.scaleY = 0.4;
+           // background.addChild(moon); //takes data stored in moon variable, and adds it as a child to the background so it can be used.
             
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
-            for (var i = 0; i < 5; i++) {
-                var buildingHeight = Math.random() * 500; //create varible that holds height of buildings
-                var building = draw.rect(75, buildingHeight, "LightGray", "Black", 1); //creates varible that holds a single building
-                building.x = 200 * i; //creates x value for the building
-                building.y = groundY - buildingHeight; //start at ground y and subtracts by height
-                background.addChild(building); //adds building to background
-                buildings.push(building); //pushes building to its corresponding array
-            }
+           // for (var i = 0; i < 5; i++) {
+           //     var buildingHeight = Math.random() * 500; //create varible that holds height of buildings
+          //      var building = draw.rect(75, buildingHeight, "LightGray", "Black", 1); //creates varible that holds a single building
+          //      building.x = 200 * i; //creates x value for the building
+           //     building.y = groundY - buildingHeight; //start at ground y and subtracts by height
+           //     background.addChild(building); //adds building to background
+           //     buildings.push(building); //pushes building to its corresponding array
+           // }
             
             // TODO 3: Part 1 - Add a tree
-            tree = draw.bitmap("img/tree.png");
+            tree = draw.bitmap("img/BatSwarm.png");
             tree.x = canvasWidth - 200;
-            tree.y = groundY - 240;
+            tree.y = groundY - 540;
             background.addChild(tree);
             
         } // end of render function - DO NOT DELETE
@@ -87,9 +87,9 @@ var background = function (window) {
             var groundY = ground.y;
             
             // TODO 3: Part 2 - Move the tree!
-            tree.x = tree.x - 4
+            tree.x = tree.x - 6
 
-            if(tree.x < -400){
+            if(tree.x < -600){
                 tree.x = canvasWidth
             }
             

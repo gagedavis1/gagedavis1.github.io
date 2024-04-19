@@ -11,7 +11,7 @@ var makeLevelData = function (window) {
     // TODO 12: change the below data
     var levelData = [
       {
-        name: "Robot Romp",
+        name: "Dungeon Crawl",
         number: 1,
         speed: -3,
         gameItems:
@@ -24,13 +24,13 @@ var makeLevelData = function (window) {
         ],
       },
       {
-        name: "Robot Rampage",
+        name: "Dungeon Dwell",
         number: 2,
         speed: -3,
         gameItems: [
-          { type: "sawblade", x: 400, y: groundY },
-          { type: "sawblade", x: 600, y: groundY },
-          { type: "sawblade", x: 900, y: groundY },
+          { type: "enemy", x: 400, y: groundY -120, image: 'img/Thunder.png', moveX: -33, moveY: -33, velo: -4, scaleX: 0.7, scaleY: 0.7, damage: -10, points: 100},
+          { type: "enemy", x: 800, y: groundY -120, image: 'img/fireball.png', moveX: -33, moveY: -33, velo: -4, scaleX: 0.7, scaleY: 0.7, damage: -10, points: 100},
+          { type: "enemy", x: 900, y: groundY -120, image: 'img/fireball.png', moveX: -33, moveY: -33, velo: -4, scaleX: 0.7, scaleY: 0.7, damage: -10, points: 100},
         ],
       },
     ];
