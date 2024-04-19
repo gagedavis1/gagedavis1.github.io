@@ -16,11 +16,11 @@ var makeLevelData = function (window) {
         speed: -3,
         gameItems:
         [
-          { type: "enemy", x: 400, y: groundY -120, image: 'img/fireball.png', moveX: -33, moveY: -33, velo: -4, scaleX: 0.7, scaleY: 0.7, damage: -10, points: 100},
-          { type: "enemy", x: 700, y: groundY -120, image: 'img/fireball.png', moveX: -33, moveY: -33, velo: -4, scaleX: 0.7, scaleY: 0.7, damage: -10, points: 100},
+          { type: "enemy", x: 400, y: groundY -120, image: 'img/fireball.png', moveX: -33, moveY: -33, velo: -4, scaleX: 0.7, scaleY: 0.7, damage: -10, points: 0},
+          { type: "enemy", x: 700, y: groundY -120, image: 'img/fireball.png', moveX: -33, moveY: -33, velo: -4, scaleX: 0.7, scaleY: 0.7, damage: -10, points: 0},
           { type: "enemy", x: 900, y: groundY -50, image: 'img/Roomba.png', moveX: -23, moveY: -25, velo: -4, scaleX: 0.25, scaleY: 0.25, damage: -20, points: 100},
           { type: "reward", x: 1500, y: groundY -20, image: 'img/MushroomReward.png', moveX: -36, moveY: -33, velo: 4, scaleX: 1, scaleY: 1, hp: 100, points: 100},
-          { type: "marker", x: 2500, y: groundY -100, image: 'img/Flag.png', moveX: -20, moveY: -15, velo: -4, scaleX: 1, scaleY: 1, hp: 100, points: 100},  //fix the placeholders you bum ^ (not you Ms. S)
+          { type: "marker", x: 2500, y: groundY -100, image: 'img/Flag.png', moveX: -20, moveY: -15, velo: -4, scaleX: 1, scaleY: 1, hp: 100, points: 100},
         ],
       },
       {
@@ -28,9 +28,11 @@ var makeLevelData = function (window) {
         number: 2,
         speed: -3,
         gameItems: [
-          { type: "enemy", x: 400, y: groundY -120, image: 'img/Thunder.png', moveX: -33, moveY: -33, velo: -4, scaleX: 0.7, scaleY: 0.7, damage: -10, points: 100},
-          { type: "enemy", x: 800, y: groundY -120, image: 'img/fireball.png', moveX: -33, moveY: -33, velo: -4, scaleX: 0.7, scaleY: 0.7, damage: -10, points: 100},
-          { type: "enemy", x: 900, y: groundY -120, image: 'img/fireball.png', moveX: -33, moveY: -33, velo: -4, scaleX: 0.7, scaleY: 0.7, damage: -10, points: 100},
+          { type: "enemy", x: 400, y: groundY -120, image: 'img/Thunder.png', moveX: -33, moveY: -33, velo: -4, scaleX: 0.7, scaleY: 0.7, damage: -20, points: 0},
+          { type: "enemy", x: 1300, y: groundY -120, image: 'img/fireball.png', moveX: -33, moveY: -33, velo: -4, scaleX: 0.7, scaleY: 0.7, damage: -10, points: 0},
+          { type: "enemy", x: 1700, y: groundY -120, image: 'img/fireball.png', moveX: -33, moveY: -33, velo: -4, scaleX: 0.7, scaleY: 0.7, damage: -10, points: 0},
+          { type: "enemy", x: 2000, y: groundY -60, image: 'img/Cooper.png', moveX: -33, moveY: -33, velo: -4, scaleX: 0.7, scaleY: 0.7, damage: -20, points: 100},
+          { type: "enemy", x: 1700, y: groundY -10, image: 'img/Spikes.png', moveX: -43, moveY: -33, velo: -8, scaleX: 0.5, scaleY: 0.5, damage: -20, points: 100}
         ],
       },
     ];
