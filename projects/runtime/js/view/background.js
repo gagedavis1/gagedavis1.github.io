@@ -70,11 +70,13 @@ var background = function (window) {
            // }
             
             // TODO 3: Part 1 - Add a tree
-            tree = draw.bitmap("img/BatSwarm.png");
+            tree = draw.bitmap("img/BatSwarm.png"); 
             tree.x = canvasWidth - 200;
             tree.y = groundY - 540;
             background.addChild(tree);
-            
+            //^above code creates a swarm of bats
+
+
         } // end of render function - DO NOT DELETE
         
         
@@ -89,19 +91,18 @@ var background = function (window) {
             // TODO 3: Part 2 - Move the tree!
             tree.x = tree.x - 6
 
-            if(tree.x < -600){
+            if(tree.x < -600){ //updates the swarm of bats location so that it will update and move
                 tree.x = canvasWidth
             }
             
             // TODO 4: Part 2 - Parallax
-            for(var i = 0; i < buildings.length; i++){
-                var building = buildings[i];
-                building.x = building.x - 0.5
-
-                if(building.x < -100){
-                    building.x = canvasWidth;
-                }
-            }
+           // for(var i = 0; i < buildings.length; i++){
+           //     var building = buildings[i];
+           //     building.x = building.x - 0.5
+           //     if(building.x < -100){
+            //        building.x = canvasWidth;
+           //     }
+           // }
 
         } // end of update function - DO NOT DELETE
         
