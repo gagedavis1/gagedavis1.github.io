@@ -30,31 +30,13 @@ function runProgram(){
   }
   
   // Game Item Objects
-  var walker = {
-    xPos: 0,
-    yPos: 0,
-    speedX: 0,
-    speedY: 0,
-    width: WALKER_WIDTH,
-    height: WALKER_HEIGHT
-    
-  }
+
   var walker = Walker("#walker", 0, 0, 0, 0, WALKER_WIDTH, WALKER_HEIGHT);
   var walker2 = Walker("#walker2", BOARD_WIDTH - WALKER_WIDTH, BOARD_HEIGHT - WALKER_HEIGHT, 0, 0, WALKER_WIDTH, WALKER_HEIGHT);
   
 
-  function Walker(id, xPos, yPos, speedX, speedY, width, height){
-    let obj = {
-      id: id,
-      xPos: xPos,
-      yPos: yPos,
-      speedX: speedX,
-      speedY: speedY,
-      width: width,
-      height: height
-    }
-    return obj;
-  }
+
+  
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -73,9 +55,13 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    repositionGameItem();
-    redrawGameItem();
-    wallCollision();
+    repositionGameItem(walker);
+    repositionGameItem(walker2);
+    redrawGameItem(walker);
+    redrawGameItem(walker2);
+    wallCollision(walker);
+    wallCollision(walker2);
+
   }
   
   /* 
@@ -136,36 +122,38 @@ function runProgram(){
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
 
-  function repositionGameItem(){
-    walker.xPos += walker.speedX;
-    walker.yPos += walker.speedY;
-    
-    walker2.xPos += walker2.speedX;
-    walker2.yPos += walker2.speedY;
+  function Walker(id, xPos, yPos, speedX, speedY, width, height){
+    let obj = {
+      id: id,
+      xPos: xPos,
+      yPos: yPos,
+      speedX: speedX,
+      speedY: speedY,
+      width: width,
+      height: height
+    }
+    return obj;
   }
   
-  function redrawGameItem(){
-    $("#walker").css("left", walker.xPos);
-    $("#walker").css("top", walker.yPos);
-    
-    $("#walker2").css("left", walker2.xPos);
-    $("#walker2").css("top", walker2.yPos);
+  function repositionGameItem(obj){
+    obj.xPos += obj.speedX;
+    obj.yPos += obj.speedY;
   }
   
-  function wallCollision(){
-    if(walker.xPos > BOARD_WIDTH - WALKER_WIDTH || walker.xPos < 0){
-      walker.xPos -= walker.speedX;
+  function redrawGameItem(obj){
+    $(obj.id).css("left", obj.xPos);
+    $(obj.id).css("top", obj.yPos);
+    
+  }
+  
+  function wallCollision(obj){
+    if(obj.xPos > BOARD_WIDTH - WALKER_WIDTH || obj.xPos < 0){
+      obj.xPos -= obj.speedX;
     }
-    if(walker.yPos < 0 || walker.yPos > BOARD_HEIGHT - WALKER_HEIGHT){
-      walker.yPos -= walker.speedY;
+    if(obj.yPos < 0 || obj.yPos > BOARD_HEIGHT - WALKER_HEIGHT){
+      obj.yPos -= obj.speedY;
     }
     
-    if(walker2.xPos > BOARD_WIDTH - WALKER_WIDTH || walker2.xPos < 0){
-      walker2.xPos -= walker2.speedX;
-    }
-    if(walker2.yPos < 0 || walker2.yPos > BOARD_HEIGHT - WALKER_HEIGHT){
-      walker2.yPos -= walker2.speedY;
-    }
   }
   
   function changeColor(){
@@ -185,5 +173,4 @@ function runProgram(){
     // turn off event handlers
     $(document).off();
   }
-  
 }
