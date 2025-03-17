@@ -60,7 +60,9 @@ function runProgram(){
     updateGameItem(paddleRight)
     drawGameItem(ball)
     updateGameItem(ball)
-
+    wallCollision(paddleLeft)
+    wallCollision(paddleRight)
+    wallCollision(ball)
   }
   
   /* 
@@ -108,6 +110,14 @@ function runProgram(){
     obj.y += obj.speedY;
   }
 
+  function wallCollision(obj){
+    if(obj.x > BOARD_WIDTH - obj.w || obj.x < 0){
+      obj.x -= obj.speedX;
+    }
+    if(obj.y < 0 || obj.y > BOARD_HEIGHT - obj.h){
+      obj.y -= obj.speedY;
+    }
+  }
   //check boundaries of paddles
   //detirmine if objects collide
   //handle what happens when the ball hits the walls
@@ -115,7 +125,7 @@ function runProgram(){
   //handle what happens when someone wins
   //handles the points
   //handle game reset
-
+ 
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
