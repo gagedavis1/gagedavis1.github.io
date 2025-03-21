@@ -62,7 +62,7 @@ function runProgram(){
     updateGameItem(ball)
     wallCollision(paddleLeft)
     wallCollision(paddleRight)
-    wallCollision(ball)
+    ballWallBounce(ball)
   }
   
   /* 
@@ -118,6 +118,17 @@ function runProgram(){
       obj.y -= obj.speedY;
     }
   }
+
+  function paddleCollision(){
+
+  }
+
+  function ballWallBounce(obj){
+    if(obj.y < 0 || obj.y > BOARD_HEIGHT - obj.h){
+      obj.speedY  = -1 * obj.speedY;
+    }
+  }
+
   //check boundaries of paddles
   //detirmine if objects collide
   //handle what happens when the ball hits the walls
