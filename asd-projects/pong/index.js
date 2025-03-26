@@ -62,7 +62,7 @@ function runProgram(){
     updateGameItem(ball)
     wallCollision(paddleLeft)
     wallCollision(paddleRight)
-    ballWallBounce(ball)
+    ballCollision(ball)
   }
   
   /* 
@@ -123,9 +123,14 @@ function runProgram(){
 
   }
 
-  function ballWallBounce(obj){
+  function ballCollision(obj){
     if(obj.y < 0 || obj.y > BOARD_HEIGHT - obj.h){
       obj.speedY  = -1 * obj.speedY;
+    }
+    if(obj.x > BOARD_WIDTH - obj.w || obj.x < 0){
+      obj.x = BOARD_WIDTH / 2
+      obj.y = BOARD_HEIGHT / 2
+      obj.speedX  = -1 * obj.speedX
     }
   }
 
