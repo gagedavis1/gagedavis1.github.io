@@ -63,6 +63,7 @@ function runProgram(){
     wallCollision(paddleLeft)
     wallCollision(paddleRight)
     ballCollision(ball)
+    paddleCollision(ball)
   }
   
   /* 
@@ -119,8 +120,13 @@ function runProgram(){
     }
   }
 
-  function paddleCollision(){
-
+  function paddleCollision(obj){
+    if(obj.x < paddleLeft.x + paddleLeft.w && obj.y > paddleLeft.y && obj.y < paddleLeft.y + paddleLeft.h){
+      obj.speedX = -obj.speedX;
+    }
+    if(obj.x + obj.w > paddleRight.x && obj.y > paddleRight.y && obj.y < paddleRight.y + paddleRight.h){
+      obj.speedX = -obj.speedX;
+    }
   }
 
   function ballCollision(obj){
