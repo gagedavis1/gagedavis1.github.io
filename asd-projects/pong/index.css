@@ -1,6 +1,8 @@
 
 body {
   background-color: rgb(0, 115, 169);
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: xx-large;
 }
 
 #board {
@@ -36,4 +38,12 @@ body {
   position:absolute;
   left: 435px;
   top: 220px;
+}
+
+#scoreLeft {
+
+}
+
+#scoreRight {
+
 }
